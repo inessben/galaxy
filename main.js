@@ -124,7 +124,7 @@ gltfLoader.load(
 // text on the bubble speech
 let text = 'Houston, we have a problem...'
 const fontLoader = new FontLoader()
-fontLoader.load('/sources/fonts/oswald.json', (oswald) => {
+fontLoader.load('sources/fonts/oswald.json', (oswald) => {
     const geometry = new TextGeometry(text, {
         font: oswald,
         height: 0.06,
