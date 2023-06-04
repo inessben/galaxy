@@ -269,7 +269,7 @@ const loop = () => {
     if (flyingSaucer != null)
         flyingSaucer.rotation.y += 0.003
 
-    // lumiere
+    // spot light
     const hue = (Date.now() * 0.0002) / 1
     RectAreaLight.color.setHSL(hue, 1, 0.5)
 
