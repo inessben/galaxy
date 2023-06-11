@@ -142,10 +142,30 @@ earth.position.z = -7
 
 space.add(earth)
 
+const geometry = new THREE.SphereGeometry(1, 32, 32);
+
+for (let i = 0; i < 100; i++) {
+    const material = new THREE.MeshPhongMaterial({ color: 0xffffff * Math.random(), flatShading: true, map: planetTexture });
+
+    const mesh = new THREE.Mesh(geometry, material);
+    const position = new THREE.Vector3(
+        (Math.random() - 0.5) * 4,
+        (Math.random() - 0.5) * 4,
+        (Math.random() - 0.5) * 4
+    ).normalize();
+    const scale = Math.random() * 50;
+    const distance = Math.random() * 4000; // Augmenter la distance entre les sphères
+    position.multiplyScalar(distance);
+    mesh.position.copy(position);
+    mesh.rotation.set(Math.random(), Math.random(), Math.random());
+    mesh.scale.set(scale, scale, scale);
+    object.add(mesh);
+}
+
 // Lights
 // add an orange ambient light
-const ambientLight = new THREE.AmbientLight(0xFF8900, 0.4)
-space.add(ambientLight)
+// const ambientLight = new THREE.AmbientLight(0xFF8900, 0.4)
+// space.add(ambientLight)
 
 // add a directionnal light
 const directionalLight = new THREE.DirectionalLight(0xffffff, 2.5)
