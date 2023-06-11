@@ -24,7 +24,7 @@ gltfLoader.load(
     (gltf) => {
         astronaut = gltf.scene
         astronaut.position.x = - 1.3
-        astronaut.position.y = -3
+        astronaut.position.y = -5
 
         astronaut.scale.set(0.5, 0.5, 0.5)
 
@@ -68,7 +68,6 @@ gltfLoader.load(
 
 
 // Scene
-const scene = new THREE.Scene()
 const space = new THREE.Scene()
 
 // Geometry
@@ -102,7 +101,7 @@ const particlesMaterial = new THREE.PointsMaterial
 
 // Particles
 const particles = new THREE.Points(particlesGeometry, particlesMaterial)
-scene.add(particles)
+space.add(particles)
 
 // Sizes
 const sizes = {}
@@ -128,7 +127,7 @@ window.addEventListener('resize', () => {
 
 const camera = new THREE.PerspectiveCamera(45, sizes.width / sizes.height)
 camera.position.z = 4
-scene.add(camera)
+space.add(camera)
 
 // planets
 // earth
@@ -141,12 +140,12 @@ earth.position.x = 7
 earth.position.y = -5
 earth.position.z = -7
 
-scene.add(earth)
+space.add(earth)
 
 // Lights
 // add an orange ambient light
 const ambientLight = new THREE.AmbientLight(0xFF8900, 0.4)
-scene.add(ambientLight)
+space.add(ambientLight)
 
 // add a directionnal light
 const directionalLight = new THREE.DirectionalLight(0xffffff, 2.5)
@@ -154,16 +153,16 @@ directionalLight.castShadow = true
 directionalLight.position.x = - 1
 directionalLight.position.y = 2
 directionalLight.position.z = 3
-scene.add(directionalLight)
+space.add(directionalLight)
 
 // add a spot light from the flying saucer
 const spotLight = new THREE.SpotLight(0xffffff, 120, Math.PI * 1)
 spotLight.position.set(3, 1, -4)
 
-scene.add(spotLight)
+space.add(spotLight)
 
 spotLight.target.position.set(7, -5, -7)
-scene.add(spotLight.target)
+space.add(spotLight.target)
 
 // Renderer
 const renderer = new THREE.WebGLRenderer({ antialias: true })
@@ -214,7 +213,7 @@ const loop = () => {
     particlesGeometry.attributes.position.needsUpdate = true
 
     // Render
-    renderer.render(scene, camera)
+    renderer.render(space, camera)
 }
 
 loop()
