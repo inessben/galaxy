@@ -13,7 +13,7 @@ const textureLoader = new THREE.TextureLoader()
 const earthTexture = textureLoader.load('textures/planet/globe/diffuse.jpg')
 
 // particles
-const star = textureLoader.load('particles/11.png')
+const star = textureLoader.load('particles/1.png')
 
 
 // Models
@@ -24,7 +24,7 @@ gltfLoader.load(
     (gltf) => {
         astronaut = gltf.scene
         astronaut.position.x = - 1.3
-        // astronaut.position.y = -20
+        astronaut.position.y = 1
 
         astronaut.scale.set(0.5, 0.5, 0.5)
 
