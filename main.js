@@ -121,24 +121,24 @@ gltfLoader.load(
 )
 
 // // text on the bubble speech
-// let text = 'Houston, we have a problem...'
-// const fontLoader = new FontLoader()
-// fontLoader.load('sources/fonts/oswald.json', (oswald) => {
-//     const geometry = new TextGeometry(text, {
-//         font: oswald,
-//         height: 0.06,
-//         size: 0.065,
-//         curveSegments: 16,
-//         bevelThickness: 11,
-//     })
-//     const mesh = new THREE.Mesh(geometry, [
-//         new THREE.MeshBasicMaterial({ color: 0x111111 })
-//     ])
-//     mesh.position.x = -0.72
-//     mesh.position.y = 0.3
-//     mesh.position.z = -0.05
-//     scene.add(mesh)
-// })
+let text = 'Houston, we have a problem...'
+const fontLoader = new FontLoader()
+fontLoader.load('sources/fonts/oswald.json', (oswald) => {
+    const geometry = new TextGeometry(text, {
+        font: oswald,
+        height: 0.06,
+        size: 0.065,
+        curveSegments: 16,
+        bevelThickness: 11,
+    })
+    const mesh = new THREE.Mesh(geometry, [
+        new THREE.MeshBasicMaterial({ color: 0x111111 })
+    ])
+    mesh.position.x = -0.72
+    mesh.position.y = 0.3
+    mesh.position.z = -0.05
+    scene.add(mesh)
+})
 
 // Scene
 const scene = new THREE.Scene()
