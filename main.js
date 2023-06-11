@@ -24,9 +24,9 @@ gltfLoader.load(
     (gltf) => {
         astronaut = gltf.scene
         astronaut.position.x = - 1.3
-        astronaut.position.y = -20
+        // astronaut.position.y = -20
 
-        astronaut.scale.set(0.45, 0.45, 0.45)
+        astronaut.scale.set(0.5, 0.5, 0.5)
 
         astronaut.traverse((child) => {
             if (child.isMesh) {
