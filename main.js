@@ -25,7 +25,7 @@ gltfLoader.load(
         astronaut = gltf.scene
         astronaut.position.x = - 1.3
         astronaut.position.y = -10
-        astronaut.position.z = -10
+        astronaut.position.z = -5
 
         astronaut.scale.set(0.5, 0.5, 0.5)
 
@@ -197,8 +197,8 @@ const loop = () => {
 
     // Update astronaut
     if (astronaut != null) {
-        // astronaut.rotation.x += 0.0015
-        // astronaut.rotation.y += 0.0015
+        astronaut.rotation.x += 0.0015
+        astronaut.rotation.y += 0.0015
         astronaut.position.y = Math.sin(Date.now() * 0.001) * 0.2; // Ajoutez cette ligne pour déplacer l'astronaute verticalement
     }
     // Update particles
