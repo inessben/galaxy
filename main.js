@@ -24,7 +24,7 @@ gltfLoader.load(
     (gltf) => {
         astronaut = gltf.scene
         astronaut.position.x = - 1
-        astronaut.position.y = -1.5
+        astronaut.position.y = -2.2
 
         astronaut.scale.set(0.5, 0.5, 0.5)
 
@@ -36,34 +36,6 @@ gltfLoader.load(
         })
 
         scene.add(astronaut)
-    }
-)
-
-// add a space ship
-let spaceShip = null
-gltfLoader.load(
-    'models/spaceship.glb',
-    (gltf) => {
-        spaceShip = gltf.scene
-        spaceShip.position.x = -1
-        spaceShip.position.y = 2
-        spaceShip.position.z = -3.5
-
-        spaceShip.rotation.x = 0.2
-        spaceShip.rotation.y = 0.5
-        spaceShip.rotation.z = 0.6
-
-
-        spaceShip.scale.set(0.002, 0.002, 0.002)
-
-        spaceShip.traverse((child) => {
-            if (child.isMesh) {
-                child.castShadow = true
-                child.receiveShadow = true
-            }
-        })
-
-        scene.add(spaceShip)
     }
 )
 
