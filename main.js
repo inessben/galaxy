@@ -91,7 +91,7 @@ particlesGeometry.setAttribute
 // Material
 const particlesMaterial = new THREE.PointsMaterial
     ({
-        size: 0.07,
+        size: 0.02,
         sizeAttenuation: true,
         color: new THREE.Color(0xffffff),
         alphaMap: star,
