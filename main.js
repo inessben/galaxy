@@ -101,7 +101,7 @@ const particlesMaterial = new THREE.PointsMaterial
 
 // Particles
 const particles = new THREE.Points(particlesGeometry, particlesMaterial)
-space.add(particles)
+scene.add(particles)
 
 // Sizes
 const sizes = {}
@@ -127,7 +127,7 @@ window.addEventListener('resize', () => {
 
 const camera = new THREE.PerspectiveCamera(45, sizes.width / sizes.height)
 camera.position.z = 4
-space.add(camera)
+scene.add(camera)
 
 // planets
 // earth
@@ -140,7 +140,7 @@ earth.position.x = 7
 earth.position.y = -5
 earth.position.z = -7
 
-space.add(earth)
+scene.add(earth)
 
 const geometry = new THREE.SphereGeometry(1, 32, 32);
 
@@ -165,7 +165,7 @@ for (let i = 0; i < 100; i++) {
 // Lights
 // add an orange ambient light
 // const ambientLight = new THREE.AmbientLight(0xFF8900, 0.4)
-// space.add(ambientLight)
+// scene.add(ambientLight)
 
 // add a directionnal light
 const directionalLight = new THREE.DirectionalLight(0xffffff, 2.5)
@@ -173,16 +173,16 @@ directionalLight.castShadow = true
 directionalLight.position.x = - 1
 directionalLight.position.y = 2
 directionalLight.position.z = 3
-space.add(directionalLight)
+scene.add(directionalLight)
 
 // add a spot light from the flying saucer
 const spotLight = new THREE.SpotLight(0xffffff, 120, Math.PI * 1)
 spotLight.position.set(3, 1, -4)
 
-space.add(spotLight)
+scene.add(spotLight)
 
 spotLight.target.position.set(7, -5, -7)
-space.add(spotLight.target)
+scene.add(spotLight.target)
 
 // Renderer
 const renderer = new THREE.WebGLRenderer({ antialias: true })
@@ -233,7 +233,7 @@ const loop = () => {
     particlesGeometry.attributes.position.needsUpdate = true
 
     // Render
-    renderer.render(space, camera)
+    renderer.render(scene, camera)
 }
 
 loop()
