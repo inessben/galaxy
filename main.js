@@ -25,7 +25,7 @@ gltfLoader.load(
         astronaut = gltf.scene
         astronaut.position.x = - 1.3
         astronaut.position.y = -10
-        astronaut.position.z = -4
+        astronaut.position.z = -2.5
 
         astronaut.scale.set(0.5, 0.5, 0.5)
 
