@@ -2,8 +2,8 @@ import './style.css'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
-import { FontLoader } from './sources/modules/FontLoader.js'
-import { TextGeometry } from './sources/modules/TextGeometry.js'
+import { FontLoader } from 'sources/modules/FontLoader.js'
+import { TextGeometry } from 'sources/modules/TextGeometry.js'
 import { RectAreaLight } from 'three'
 
 //
@@ -124,7 +124,7 @@ gltfLoader.load(
 // text on the bubble speech
 let text = 'Houston, we have a problem...'
 const fontLoader = new FontLoader()
-fontLoader.load('sources/fonts/oswald.json', (oswald) => {
+fontLoader.load('./sources/fonts/oswald.json', (oswald) => {
     const geometry = new TextGeometry(text, {
         font: oswald,
         height: 0.06,
