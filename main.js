@@ -2,8 +2,6 @@ import './style.css'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
-import { FontLoader } from './sources/modules/FontLoader.js'
-import { TextGeometry } from './sources/modules/TextGeometry.js'
 
 //
 // Loaders
@@ -28,7 +26,7 @@ gltfLoader.load(
         astronaut.position.x = - 1
         astronaut.position.y = -1.5
 
-        astronaut.scale.set(0.45, 0.45, 0.45)
+        astronaut.scale.set(0.5, 0.5, 0.5)
 
         astronaut.traverse((child) => {
             if (child.isMesh) {
@@ -96,49 +94,6 @@ gltfLoader.load(
     }
 )
 
-// add a speech bubble
-let bubble = null
-gltfLoader.load(
-    'models/speech-bubble.glb',
-    (gltf) => {
-        bubble = gltf.scene
-        bubble.position.x = -0.57
-        bubble.position.y = 0.2
-
-        bubble.rotation.y = Math.PI * 1
-
-        bubble.scale.set(0.58, 0.58, 0.58)
-
-        bubble.traverse((child) => {
-            if (child.isMesh) {
-                child.castShadow = true
-                child.receiveShadow = true
-            }
-        })
-
-        scene.add(bubble)
-    }
-)
-
-// // text on the bubble speech
-// let text = 'Houston, we have a problem...'
-// const fontLoader = new FontLoader()
-// fontLoader.load('sources/fonts/oswald.json', (oswald) => {
-//     const geometry = new TextGeometry(text, {
-//         font: oswald,
-//         height: 0.06,
-//         size: 0.065,
-//         curveSegments: 16,
-//         bevelThickness: 11,
-//     })
-//     const mesh = new THREE.Mesh(geometry, [
-//         new THREE.MeshBasicMaterial({ color: 0x111111 })
-//     ])
-//     mesh.position.x = -0.72
-//     mesh.position.y = 0.3
-//     mesh.position.z = -0.05
-//     scene.add(mesh)
-// })
 
 // Scene
 const scene = new THREE.Scene()
@@ -268,10 +223,11 @@ const loop = () => {
         flyingSaucer.rotation.y += 0.003
 
     // Update astronaut
-    if (astronaut != null)
+    if (astronaut != null) {
         astronaut.rotation.x += 0.0015
-    astronaut.rotation.y += 0.0015
-
+        astronaut.rotation.y += 0.0015
+        astronaut.position.y = Math.sin(Date.now() * 0.001) * 0.2; // Ajoutez cette ligne pour déplacer l'astronaute verticalement
+    }
     // Update particles
     for (let i = 0; i < count; i++) {
         const iStride = i * 3
