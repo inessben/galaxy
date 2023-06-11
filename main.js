@@ -68,6 +68,7 @@ gltfLoader.load(
 
 
 // Scene
+const scene = new THREE.Scene()
 const space = new THREE.Scene()
 
 // Geometry
