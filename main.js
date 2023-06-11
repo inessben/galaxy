@@ -197,7 +197,7 @@ const loop = () => {
 
     // Update astronaut
     if (astronaut != null) {
-        astronaut.rotation.x += 0.0015
+        // astronaut.rotation.x += 0.0015
         // astronaut.rotation.y += 0.0015
         astronaut.position.y = Math.sin(Date.now() * 0.001) * 0.2; // Ajoutez cette ligne pour déplacer l'astronaute verticalement
     }
