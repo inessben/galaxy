@@ -1,8 +1,14 @@
 import './style.css'
 import * as THREE from 'three'
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+// import { FirstPersonControls } from 'three/examples/jsm/controls/FirstPersonControls';
+// import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import Stats from 'three/examples/jsm/libs/stats.module';
 
+const stats = new Stats()
+stats.showPanel(0)
+document.body.appendChild(stats.dom)
 //
 // Loaders
 // gltf
@@ -14,7 +20,6 @@ const earthTexture = textureLoader.load('textures/planet/globe/diffuse.jpg')
 
 // particles
 const star = textureLoader.load('particles/1.png')
-
 
 // Models
 // add an astronaut
@@ -69,7 +74,7 @@ gltfLoader.load(
 
 // Scene
 const scene = new THREE.Scene()
-const space = new THREE.Scene()
+scene.fog = new THREE.FogExp2(0x4A4Aff, 0.000005);
 
 // Geometry
 const count = 1500
@@ -188,16 +193,16 @@ const loop = () => {
 
     // Update earth
     if (earth != null)
-        earth.rotation.y += 0.001
+        earth.rotation.y += 0.0002
 
     // Update flyingSaucer
     if (flyingSaucer != null)
-        flyingSaucer.rotation.y += 0.003
+        flyingSaucer.rotation.y += 0.0005
 
     // Update astronaut
     if (astronaut != null) {
-        astronaut.rotation.x += 0.0015
-        astronaut.rotation.y += 0.0015
+        astronaut.rotation.z += 0.0015
+        astronaut.rotation.y += 0.0002
         astronaut.position.y = Math.sin(Date.now() * 0.001) * 0.2; // Ajoutez cette ligne pour déplacer l'astronaute verticalement
     }
     // Update particles
@@ -213,6 +218,7 @@ const loop = () => {
     }
     particlesGeometry.attributes.position.needsUpdate = true
 
+    stats.update();
     // Render
     renderer.render(scene, camera)
 }
